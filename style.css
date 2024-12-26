@@ -1,0 +1,23 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+.emoji-info {
+    display: flex;
+    align-items: center;
+}
+
+.emoji-name {
+    margin-right: 8px;
+}
+
+.emoji {
+    font-size: 2rem;
+}
+
+.description {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #fff;
+}
