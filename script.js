@@ -1,36 +1,51 @@
-const emojiContainer = document.getElementById('emoji-container');
-
-        emojiList.forEach(emoji => {
+ import {emojiList} from "./emojiList.js";
 
 
-            const emojiCard = document.createElement('div');
-            emojiCard.classList.add('emoji-card');
+const emojiListDiv = document.querySelector("#emojiListDiv");
+const input = document.querySelector("#input");
+
+let searchresults = [...emojiList]; 
 
 
-            const emojiInfo = document.createElement('div');
-            emojiInfo.classList.add('emoji-info');
+fetchEmoji(searchresults);
+
+input.addEventListener("keyup", searchEmoji);
+
+function fetchEmoji(list) {
+  emojiListDiv.innerHTML = ""; 
+  list.forEach((obj) => {
+    const parent = document.createElement("div");
+    parent.classList.add("parent");
+
+    const emoji = document.createElement("p");
+    emoji.classList.add("emoji");
+    emoji.innerText = obj.emoji;
+
+    const alias = document.createElement("p");
+    alias.classList.add("alias");
+    alias.innerText = obj.aliases.toString();
+
+    const description = document.createElement("p");
+    description.classList.add("description");
+    description.innerText = obj.description;
+
+    const tags = document.createElement("p");
+    tags.classList.add("tags");
+    tags.innerText = obj.tags;
 
 
-            const emojiName = document.createElement('span');
-            emojiName.classList.add('emoji-name');
-            emojiName.textContent = emoji.name;
-            emojiInfo.appendChild(emojiName);
+    parent.append(emoji, alias, description , tags);
+    emojiListDiv.append(parent);
+  });
+}
 
-
-            const emojiSymbol = document.createElement('span');
-            emojiSymbol.classList.add('emoji');
-            emojiSymbol.textContent = emoji.emoji;
-            emojiInfo.appendChild(emojiSymbol);
-
-
-            emojiCard.appendChild(emojiInfo);
-
-
-            const emojiDescription = document.createElement('div');
-            emojiDescription.classList.add('description');
-            emojiDescription.textContent = emoji.description;
-            emojiCard.appendChild(emojiDescription);
-
-
-            emojiContainer.appendChild(emojiCard);
-        });
+function searchEmoji(e) {
+  if (e.target.value.length > 1) {
+    searchresults = emojiList.filter((obj) =>
+      obj.description.includes(e.target.value)
+    );
+  } else {
+    searchresults = [...emojiList]; 
+  }
+  fetchEmoji(searchresults);
+}

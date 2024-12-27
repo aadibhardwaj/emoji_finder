@@ -1,23 +1,37 @@
-body {
-    background-color: black;
-    color: white;
-}
+body
+{
 
-.emoji-info {
+    background-color: bisque;
+    font-family: "poppins";
+}
+h1
+{
+    text-align: center;
+}
+#emojiListDiv
+{
+    width: 100%;
     display: flex;
-    align-items: center;
-}
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
 
-.emoji-name {
-    margin-right: 8px;
+} 
+.emoji
+{
+    font-size: 30px;
 }
-
-.emoji {
-    font-size: 2rem;
-}
-
-.description {
-    margin-top: 8px;
-    font-size: 0.9rem;
-    color: #fff;
+.parent
+{
+    border: 2px solid black;
+    height:100px;
+    border-radius: 20px;
+    width: 31%;
+    display: flex;
+    padding: 10px 0px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }

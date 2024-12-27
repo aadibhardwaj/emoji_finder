@@ -1,4 +1,4 @@
-const emojiList = [
+ export const emojiList = [
   {
     emoji: "😀",
     description: "grinning face",
